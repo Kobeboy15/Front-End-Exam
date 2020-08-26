@@ -3,9 +3,10 @@
         <div class="news-container">
             <div class="news-header">
                 <h2>News</h2>
+                <p>Create New Post</p>
             </div>
             <div class="news-body">
-                <Card v-for="index in 9" :key="index"/>
+                <Card v-for="index in 6" :key="index"/>
             </div>
             <div class="news-footer">
                 <input type="button" value="Load More">
@@ -31,6 +32,7 @@ import Card from '../components/NewsComponents/Card.vue';
 <style scoped>
 
     .news-wrapper {
+        font-family: 'Montserrat', sans-serif;
         background: white;
         width: 1366px;
         margin: auto;
@@ -44,6 +46,21 @@ import Card from '../components/NewsComponents/Card.vue';
 
     .news-header {
         margin-bottom: 65px;
+        display: flex;
+    }
+
+    .news-header h2 {
+        flex: 1;
+    }
+
+    .news-header p {
+        font-size: 20px;
+        font-weight: bold;
+        text-decoration: underline;
+        letter-spacing: 2px;
+
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
     }
 
     .news-body {

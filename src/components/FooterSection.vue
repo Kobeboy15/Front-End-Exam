@@ -3,14 +3,16 @@
         <div class="footer-container">
             <div class="footer-banner">
                 <div class="footer-info">
-                    <img src="../assets/company-logo-white.png" />
+                    <img src="../assets/company-logo-white.png" class="logo"/>
                     <p>
                         サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキスト
                     </p>
                 </div>
-                <div class="footer-top-button">
-                    <div class="top-button">
-                    </div>
+            </div>
+            <div class="top-button-container" @click="scrollToTop" >
+                <div class="top-button">
+                    <img src="../assets/Path_3.png"/>
+                    <p>Top</p>
                 </div>
             </div>
         </div>
@@ -23,6 +25,15 @@
 <script>
     export default {
         name: 'FooterSection',
+
+        methods: {
+            scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                })
+            }
+        }
     }
 </script>
 
@@ -35,6 +46,35 @@
     .footer-container {
         width: 1366px;
         margin: auto;
+
+        display: flex;
+    }
+
+
+    .footer-banner {
+        flex: 1;
+    }
+
+    .top-button-container {
+        background: white;
+        width: 70px;
+        height: 70px;
+        text-align: center;
+        align-self: flex-end;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        cursor: pointer;
+    }
+
+    .top-button p {
+        color: #101010;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 16px;
+        letter-spacing: 1px;
     }
 
     .footer-info {
@@ -54,7 +94,7 @@
         text-align: center;
     }
 
-    img {
+    .logo {
         margin-bottom: 47px;
     }
 
