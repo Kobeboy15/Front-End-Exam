@@ -5,11 +5,26 @@
                 <h2>News</h2>
                 <p>Create New Post</p>
             </div>
-            <div class="news-body">
-                <Card v-for="index in 6" :key="index"/>
-            </div>
+            <transition-group name="list" tag="div" class="news-body">
+                <div v-for="(article, index) in filtedArticles" :key="`article-${index}`">
+                    
+                        <Card :image="article.imageLink">
+                            <template slot="date">
+                                2019.06.19
+                            </template>
+                            <template slot="description">
+                                サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキスト
+                            </template>
+                        </Card>
+                </div>
+            </transition-group>
             <div class="news-footer">
-                <input type="button" value="Load More">
+                <input 
+                    type="button" 
+                    v-if="articles.length > articleFeedLimit" 
+                    @click="articleFeedLimit += 6" 
+                    value="Load More"
+                />
             </div>
         </div>
     </div>
@@ -23,6 +38,66 @@ import Card from '../components/NewsComponents/Card.vue';
 
         components: {
             Card,
+        },
+
+        data() {
+            return {
+                feedArticles: [],
+                articles: [
+                    {
+                        "imageLink": "cardphoto.png",
+                        "date": "2019.06.19",
+                        "description": "サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキスト"
+                    },
+                    {
+                        "imageLink": "cardphoto.png",
+                        "date": "2019.06.19",
+                        "description": "サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキスト"
+                    },
+                    {
+                        "imageLink": "cardphoto.png",
+                        "date": "2019.06.19",
+                        "description": "サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキスト"
+                    },
+                    {
+                        "imageLink": "cardphoto.png",
+                        "date": "2019.06.19",
+                        "description": "サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキスト"
+                    },
+                    {
+                        "imageLink": "cardphoto.png",
+                        "date": "2019.06.19",
+                        "description": "サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキスト"
+                    },
+                    {
+                        "imageLink": "cardphoto.png",
+                        "date": "2019.06.19",
+                        "description": "サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキスト"
+                    },
+                    {
+                        "imageLink": "cardphoto.png",
+                        "date": "2019.06.19",
+                        "description": "サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキスト"
+                    },
+                    {
+                        "imageLink": "cardphoto.png",
+                        "date": "2019.06.19",
+                        "description": "サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキスト"
+                    },
+                    {
+                        "imageLink": "cardphoto.png",
+                        "date": "2019.06.19",
+                        "description": "サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキスト"
+                    },
+                ],
+                articleFeedLimit: 3,
+            }
+        },
+
+        computed: {
+            filtedArticles() {
+                return this.articles.filter( (el, index) => index < this.articleFeedLimit);
+            }
         }
     }
 
@@ -72,6 +147,14 @@ import Card from '../components/NewsComponents/Card.vue';
 
     .news-footer {
         text-align: center;
+    }
+
+    .list-enter-active, .list-leave-active {
+        transition: all 1s;
+    }
+    .list-enter, .list-leave-to {
+        opacity: 0;
+        transform: translateY(30px);
     }
 
     input[type=button] {

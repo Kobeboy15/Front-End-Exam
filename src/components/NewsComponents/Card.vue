@@ -1,11 +1,15 @@
 <template>
     <div class="card-container">
         <div class="image-container">
-            <img src="../../assets/cardphoto.png" />
+            <img :src="passedImage" />
         </div>
         <div class="details-container">
-            <p>2019.06.19</p>
-            <p>サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキスト</p>
+            <p>
+                <slot name="date" />
+            </p>
+            <p>
+                <slot name="description" />
+            </p>
         </div>
     </div>
 </template>
@@ -13,6 +17,19 @@
 <script>
     export default {
         name: 'Card',
+
+        props: {
+            image: {
+                type: String,
+                required: true
+            }
+        },
+
+        computed: {
+            passedImage() {
+                return require('../../assets/'+this.image);
+            }
+        }
     }
 </script>
 

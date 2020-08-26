@@ -23,9 +23,9 @@
                     <div class="hero-banner-text-container">
                         <div class="hero-banner-text-wrapper">
                             <div class="hero-title">
-                                <span>サンプルテキスト サンプル ルテキストサンプルテキスト</span>
+                                <span>{{ images[currentIndex].description }}</span>
                             </div>
-                            <small>2019.06.19</small>
+                            <small>{{ images[currentIndex].date }}</small>
                         </div>
                     </div>
                 </div>
@@ -41,13 +41,27 @@
         data() {
             return {
                 images: [
-                    "photo1.png",
-                    "photo1.png",
-                    "photo1.png",
+                    {
+                        "name": "photo1.png",
+                        "description": "サンプルテキスト サンプル ルテキストサンプルテキスト",
+                        "date": "2019.06.19"
+                    },
+                    {
+                        "name": "photo1.png",
+                        "description": "サンプルテキスト サンプル ルテキストサンプルテキスト",
+                        "date": "2019.06.19"
+                    },
+                    {
+                        "name": "photo1.png",
+                        "description": "サンプルテキスト サンプル ルテキストサンプルテキスト",
+                        "date": "2019.06.19"
+                    },
                 ],
                 currentIndex: 0,
                 timer: null,
-                transitionType: ""
+                transitionType: "",
+                disabledButton: false,
+                timeout: null,
             }
         },
         
@@ -71,31 +85,47 @@
             },
 
             next() {
-                this.transitionType = "slide-next"
-                if(this.currentIndex != 0 && Math.abs(this.currentIndex + 1) % this.images.length == 0){
-                    this.currentIndex = 0;
-                } else {
-                    this.currentIndex += 1;
+                if(!this.disabledButton) {
+                    this.disabledButton = true;
+
+                    this.transitionType = "slide-next"
+                    if(this.currentIndex != 0 && Math.abs(this.currentIndex + 1) % this.images.length == 0){
+                        this.currentIndex = 0;
+                    } else {
+                        this.currentIndex += 1;
+                    }
+                    clearInterval(this.timer);
+                    this.startSlide();
+
+                    this.timeout = setTimeout(() => {
+                        this.disabledButton = false;
+                    }, 1000);
                 }
-                clearInterval(this.timer);
-                this.startSlide();
             },
 
             prev() {
-                this.transitionType = "slide-prev";
-                if(this.currentIndex == 0) {
-                    this.currentIndex = this.images.length - 1;
-                } else {
-                    this.currentIndex -= 1;
+                if(!this.disabledButton){
+                    this.disabledButton = true;
+
+                    this.transitionType = "slide-prev";
+                    if(this.currentIndex == 0) {
+                        this.currentIndex = this.images.length - 1;
+                    } else {
+                        this.currentIndex -= 1;
+                    }
+                    clearInterval(this.timer);
+                    this.startSlide();
+
+                    this.timeout = setTimeout(() => {
+                        this.disabledButton = false;
+                    }, 1000);
                 }
-                clearInterval(this.timer);
-                this.startSlide();
             }
         },
 
         computed: {
             currentImg() {
-                return require('../assets/'+this.images[Math.abs(this.currentIndex) % this.images.length]);
+                return require('../assets/'+this.images[Math.abs(this.currentIndex) % this.images.length].name);
             }
         }
     };
