@@ -1,11 +1,16 @@
 <template>
     <div class="body-wrapper">
         <div class="body-container">
-            <div class="arrow-container">
+            <div class="action-container">
                 <img 
                     src="../assets/Path_2.png" 
                     @click="prev" 
                     class="arrows" 
+                />
+                <Pagination 
+                    :currentPage="currentIndex"
+                    :maxPage="images.length-1"
+                    @switchPage = "changePage"
                 />
                 <img 
                     src="../assets/Path_1.png" 
@@ -35,8 +40,14 @@
 </template>
 
 <script>
+    import Pagination from './GenericComponents/Pagination.vue';
+
     export default {
         name: 'BodySection',
+
+        components: {
+            Pagination
+        },
 
         data() {
             return {
@@ -120,6 +131,26 @@
                         this.disabledButton = false;
                     }, 1000);
                 }
+            },
+
+            changePage(page) {
+                if(!this.disabledButton){
+                    this.disabledButton = true;
+
+                    if(page < this.currentIndex) {
+                        this.transitionType = "slide-prev";
+                    } else {
+                        this.transitionType = "slide-next";
+                    }
+
+                    this.currentIndex = page;
+                    clearInterval(this.timer);
+                    this.startSlide();
+
+                    this.timeout = setTimeout(() => {
+                        this.disabledButton = false;
+                    }, 1000);
+                }
             }
         },
 
@@ -140,7 +171,7 @@
         align-items: center;
     }
     
-    .arrow-container {
+    .action-container {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -163,6 +194,10 @@
         background: rgba(0, 0, 0, 0.2);
 
         transition: 0.2s ease-in-out
+    }
+
+    .pagination-container {
+        align-self: flex-end;
     }
 
     .slide-next-leave-active,

@@ -28,7 +28,5 @@ import FooterSection from './components/FooterSection.vue';
 <style>
     body {
         margin: 0;
-        /* width: 1366px;
-        margin: auto; */
     }
 </style>
