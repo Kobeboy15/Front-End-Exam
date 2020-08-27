@@ -1,27 +1,12 @@
 <template>
     <div id="app">
-        <Navbar />
-        <BodySection />
-        <NewsSection />
-        <FooterSection />
+        <router-view/>
     </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue';
-import BodySection from './components/BodySection.vue';
-import NewsSection from './components/NewsSection.vue';
-import FooterSection from './components/FooterSection.vue';
-
     export default {
-        name: 'App',
-
-        components: {
-            Navbar,
-            BodySection,
-            NewsSection,
-            FooterSection,
-        },
+        name: 'App'
     }
 </script>
 
