@@ -4,7 +4,13 @@
             <div class="logo-container">
                 <img src="../assets/company-logo.png" />
             </div>
-            <p>Login</p>
+            <p
+                v-if="getCurrentRoute == 'login' || getCurrentRoute == 'register'"
+                @click="goToDashboard"
+            >
+                Close
+            </p>
+            <p v-else @click="openLoginForm">Login</p>
         </div>
     </div>
 </template>
@@ -12,6 +18,22 @@
 <script>
     export default {
         name: 'Navbar',
+
+        methods: {
+            openLoginForm() {
+                this.$router.push({name: 'login'})
+            },
+
+            goToDashboard() {
+                this.$router.push({name: 'dashboard'})
+            }
+        },
+
+        computed: {
+            getCurrentRoute() {
+                return this.$route.name;
+            }
+        }
     }
 </script>
 

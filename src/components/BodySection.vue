@@ -164,11 +164,19 @@
 
 <style scoped>
 
+    @keyframes fade {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
     .body-container {
         width: 1366px;
         margin: auto;
         position: relative;
         align-items: center;
+
+        animation-name: fade;
+        animation-duration: 1s;
     }
     
     .action-container {

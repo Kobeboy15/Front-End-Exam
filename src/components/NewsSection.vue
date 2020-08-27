@@ -10,10 +10,10 @@
                     
                         <Card :image="article.imageLink">
                             <template slot="date">
-                                2019.06.19
+                                {{ article.date }}
                             </template>
                             <template slot="description">
-                                サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキスト
+                                {{ article.description }}
                             </template>
                         </Card>
                 </div>

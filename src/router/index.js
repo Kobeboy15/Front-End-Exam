@@ -4,12 +4,28 @@ import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
-  const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
+    const routes = [
+    {
+        path: '/',
+        name: 'Home',
+        component: Home,
+        children:[{
+            path: 'dashboard',
+            name: 'dashboard',
+            component: () => import ('@/components/BodySection.vue'),
+        },
+        {
+            path: 'login',
+            name: 'login',
+            component: () => import ('@/components/LoginForm.vue'),
+        },
+        {
+            path: 'register',
+            name: 'register',
+            component: () => import ('@/components/RegisterForm.vue'),
+        },
+    ]
+    },
   // {
   //   path: '/about',
   //   name: 'About',
@@ -21,8 +37,8 @@ Vue.use(VueRouter)
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  routes
+    mode: 'history',
+    routes
 })
 
 export default router

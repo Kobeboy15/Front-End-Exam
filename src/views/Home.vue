@@ -1,7 +1,7 @@
 <template>
     <div class="home-page">
         <Navbar />
-        <BodySection />
+        <router-view />
         <NewsSection />
         <FooterSection />
     </div>
@@ -9,7 +9,6 @@
 
 <script>
 import Navbar from '@/components/Navbar.vue';
-import BodySection from '@/components/BodySection.vue';
 import NewsSection from '@/components/NewsSection.vue';
 import FooterSection from '@/components/FooterSection.vue';
 
@@ -18,10 +17,8 @@ export default {
 
     components: {
         Navbar,
-        BodySection,
         NewsSection,
         FooterSection
     }
-
 }
 </script>
