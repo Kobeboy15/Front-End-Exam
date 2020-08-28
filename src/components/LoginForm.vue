@@ -14,7 +14,11 @@
                     <input type="password" />
                 </div>
                 <div class="login-actions">
-                    <input type="button" value="Login" />
+                    <input 
+                        type="button" 
+                        value="Login"
+                        @click="logUserIn"
+                    />
                     <p>No account yet? 
                         <span @click="openRegisterForm">
                             Register Here
@@ -33,6 +37,10 @@
         methods: {
             openRegisterForm() {
                 this.$router.push({name: 'register'})
+            },
+
+            logUserIn() {
+                this.$attrs.data.logUserIn();
             }
         }
     }

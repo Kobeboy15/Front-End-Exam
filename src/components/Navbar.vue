@@ -10,7 +10,18 @@
             >
                 Close
             </p>
-            <p v-else @click="openLoginForm">Login</p>
+            <p 
+                v-else-if="!isLoggedIn"
+                @click="openLoginForm"
+            >
+                Login
+            </p>
+            <p 
+                v-else
+                @click="logUserOut"
+            >
+                Logout
+            </p>
         </div>
     </div>
 </template>
@@ -19,14 +30,30 @@
     export default {
         name: 'Navbar',
 
+        data() {
+            return{
+                isLoggedIn: false,
+            }
+        },
+
         methods: {
             openLoginForm() {
                 this.$router.push({name: 'login'})
             },
 
             goToDashboard() {
-                this.$router.push({name: 'dashboard'})
-            }
+                this.$router.push({name: 'home'})
+            },
+
+            logUserIn() {
+                this.isLoggedIn = true;
+                this.$router.push({name: 'home'});
+            },
+
+            logUserOut() {
+                this.isLoggedIn = false;
+                this.$router.push({name: 'home'});
+            },
         },
 
         computed: {

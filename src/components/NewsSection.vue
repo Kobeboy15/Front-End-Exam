@@ -6,16 +6,16 @@
                 <p>Create New Post</p>
             </div>
             <transition-group name="list" tag="div" class="news-body">
-                <div v-for="(article, index) in filtedArticles" :key="`article-${index}`">
-                    
-                        <Card :image="article.imageLink">
-                            <template slot="date">
-                                {{ article.date }}
-                            </template>
-                            <template slot="description">
-                                {{ article.description }}
-                            </template>
-                        </Card>
+                <div 
+                    v-for="(article, index) in filtedArticles" 
+                    :key="`article-${index}`"
+                    @click="openViewArticle"
+                >
+                    <Card 
+                        :image="article.imageLink"
+                        :date="article.date"
+                        :description="article.description"
+                    />
                 </div>
             </transition-group>
             <div class="news-footer">
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import Card from '../components/NewsComponents/Card.vue';
+import Card from '../components/GenericComponents/Card.vue';
 
     export default {
         name: 'NewsSection',
@@ -94,6 +94,12 @@ import Card from '../components/NewsComponents/Card.vue';
             }
         },
 
+        methods: {
+            openViewArticle() {
+                this.$router.push({name: 'view-article'}) 
+            }
+        },
+
         computed: {
             filtedArticles() {
                 return this.articles.filter( (el, index) => index < this.articleFeedLimit);
@@ -114,9 +120,7 @@ import Card from '../components/NewsComponents/Card.vue';
     }
 
     .news-container {
-        
         padding: 98px 0;
-        
     }
 
     .news-header {

@@ -5,10 +5,10 @@
         </div>
         <div class="details-container">
             <p>
-                <slot name="date" />
+                {{ date }}
             </p>
             <p>
-                <slot name="description" />
+                {{ description }}
             </p>
         </div>
     </div>
@@ -20,6 +20,14 @@
 
         props: {
             image: {
+                type: String,
+                required: true
+            },
+            date: {
+                type: String,
+                required: true
+            },
+            description: {
                 type: String,
                 required: true
             }
@@ -37,8 +45,8 @@
 
     .card-container {
         border: 1px solid black;
-
         padding: 40px 30px;
+        cursor: pointer;
     }
 
     img {
