@@ -1,22 +1,22 @@
 <template>
-    <div class="register-container">
-        <div class="register-form">
-            <div class="header-title">
-                <h2 key="title-key">Register</h2>
+    <div class="register__form">
+        <div class="register__container">
+            <div class="register__title">
+                <h2>Register</h2>
             </div>
-            <div class="register register-email">
+            <div class="register__item">
                 <p>Email</p>
                 <input type="text" v-model="registerEmail"/>
             </div>
-            <div class="register register-pass">
+            <div class="register__item">
                 <p>Password</p>
                 <input type="password" v-model="registerPass"/>
             </div>
-            <div class="register register-pass">
+            <div class="register__item">
                 <p>Confirm Password</p>
                 <input type="password" v-model="registerConfirm"/>
             </div>
-            <div class="register-actions" >
+            <div class="register__actions" >
                 <input 
                     type="button" 
                     value="register"
@@ -60,15 +60,7 @@
         margin: 0;
     }
 
-    .slide-enter-active, .slide-leave-active {
-        transition: all 1s;
-    }
-    .slide-enter, .slide-leave-to {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    .register-container {
+    .register__form {
         width: 460px;
         height: 666px;
         margin: auto;
@@ -82,52 +74,52 @@
         to {opacity: 1;}
     }
 
-    .register-form {
+    .register__container {
         font-family: 'Montserrat', sans-serif;
 
         animation-name: slide;
         animation-duration: 1s;
     }
 
-    .header-title {
+    .register__title {
         text-transform: uppercase;
         margin-bottom: 50px;
     }
 
-    .header-title h2 {
+    .register__title h2 {
         letter-spacing: 2px;
     }
 
-    .register {
+    .register__item {
         display: flex;
         flex-direction: column;
         margin-bottom: 20px;
     }
 
-    .register p {
+    .register__item p {
         font-size: 18px;
         margin: 5px 0;
         letter-spacing: 1px;
     }
 
-    .register input {
+    .register__item input {
         padding: 12px;
         border-radius: 0;
         border: 1px solid #101010
     }
 
-    .register-actions p {
+    .register__actions p {
         text-align: center;
         letter-spacing: 1px;
     }
 
-    .register-actions span {
+    .register__actions span {
         cursor: pointer;
         font-weight: bold;
         text-transform: uppercase;
     }
 
-    .register-actions span:hover {
+    .register__actions span:hover {
         text-decoration: underline;
     }
 
@@ -144,8 +136,6 @@
         border: 0;
         border: 1px solid #101010;
         margin-bottom: 40px;
-        
-
         cursor: pointer;
         transition: 0.2s ease-in-out;
     }
@@ -154,7 +144,6 @@
         background: white;
         color: #101010;
         border: 1px solid #101010;
-
         transition: 0.2s ease-in-out;
     }
 

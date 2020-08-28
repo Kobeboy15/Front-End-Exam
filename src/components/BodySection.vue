@@ -1,7 +1,7 @@
 <template>
-    <div class="body-wrapper">
-        <div class="body-container">
-            <div class="action-container">
+    <div class="body">
+        <div class="body__container">
+            <div class="slideshow__container">
                 <img 
                     src="../assets/Path_2.png" 
                     @click="prev" 
@@ -21,13 +21,13 @@
             <transition-group 
                 :name="transitionType" 
                 tag="div" 
-                class="img-slider"
+                class="slideshow"
             >
-                <div v-for="number in [currentIndex]" :key="number" class="image-container">
+                <div v-for="number in [currentIndex]" :key="number" class="image__container">
                     <img :src="currentImg" />
-                    <div class="hero-banner-text-container">
-                        <div class="hero-banner-text-wrapper">
-                            <div class="hero-title">
+                    <div class="text__container">
+                        <div class="text__sub-content">
+                            <div class="text">
                                 <span>{{ images[currentIndex].description }}</span>
                             </div>
                             <small>{{ images[currentIndex].date }}</small>
@@ -169,7 +169,7 @@
         to {opacity: 1;}
     }
 
-    .body-container {
+    .body__container {
         width: 1366px;
         margin: auto;
         position: relative;
@@ -179,7 +179,7 @@
         animation-duration: 1s;
     }
     
-    .action-container {
+    .slideshow__container {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -234,7 +234,7 @@
         transform: translate(-100%, 0);
     }
 
-    .img-slider {
+    .slideshow {
         overflow: hidden;
         position: relative;
         width: 100%;
@@ -242,7 +242,7 @@
         min-height: 666px;
     }
 
-    .img-slider img {
+    .slideshow img {
         width: 100%;
         position: absolute;
         top: 0;
@@ -253,7 +253,7 @@
         object-fit: cover;
     }
 
-    .hero-banner-text-container {
+    .text__container {
         font-family: 'Montserrat', sans-serif;
         position: absolute;
         height: 666px;
@@ -263,21 +263,21 @@
         justify-content: flex-end;
     }
 
-    .hero-banner-text-wrapper {
+    .text__sub-content {
         padding-right: 123px;
         text-align: right;
         width: 40em;
     }
 
-    .image-container {
+    .image__container {
         position: relative;
     }
 
-    .hero-title {
+    .text {
         margin-bottom: 25px;
     }
 
-    .hero-title span {
+    .text span {
         display: inline;
         font-size: 60px;
         font-weight: bold;

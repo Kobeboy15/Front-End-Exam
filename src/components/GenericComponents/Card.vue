@@ -1,9 +1,9 @@
 <template>
-    <div class="card-container">
-        <div class="image-container">
+    <div class="card__container">
+        <div>
             <img :src="passedImage" />
         </div>
-        <div class="details-container">
+        <div>
             <p>
                 {{ date }}
             </p>
@@ -43,7 +43,7 @@
 
 <style scoped>
 
-    .card-container {
+    .card__container {
         border: 1px solid black;
         padding: 40px 30px;
         cursor: pointer;

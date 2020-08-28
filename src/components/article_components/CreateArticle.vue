@@ -1,7 +1,7 @@
 <template>
-    <div class="create-article-wrapper">
-        <div class="header-nav-panel">
-            <div class="nav-panel-container">
+    <div class="create__article">
+        <div class="navigation__panel">
+            <div class="navigation__container">
                 <p
                     @click="returnHome"
                 >
@@ -13,8 +13,8 @@
                 </p>
             </div>
         </div>
-        <div class="article-wrapper">
-            <div class="actions-wrapper">
+        <div class="article__container">
+            <div class="actions__container">
                 <p>Save Post</p>
                 <p
                     @click="cancelCreate"
@@ -22,15 +22,15 @@
                     Cancel 
                 </p>
             </div>
-            <div class="article-header">
+            <div class="article__header">
                 <p>2019.06.19</p>
                 <textarea
                     maxlength="47"
                     placeholder="Title"
                 />
             </div>
-            <div class="article-body">
-                <div class="img-wrapper">
+            <div class="article__body">
+                <div class="img__container">
                     <input 
                         type="button" 
                         value="Upload Image"
@@ -68,14 +68,14 @@
         margin: 0;
     }
 
-    .header-nav-panel {
+    .navigation__panel {
         background: #F5F5F5;
         display: flex;
         width: 100%;
         height: 80px;
     }
 
-    .nav-panel-container {
+    .navigation__container {
         display: flex;
         width: 1366px;
         margin: auto;
@@ -83,19 +83,19 @@
         text-transform: uppercase;
     }
 
-    .nav-panel-container p:first-child {
+    .navigation__container p:first-child {
         cursor: pointer;
     }
 
-    .nav-panel-container p:first-child:hover {
+    .navigation__container p:first-child:hover {
         text-decoration: underline;
     }
 
-    .nav-panel-container p:nth-child(2) {
+    .navigation__container p:nth-child(2) {
         margin: 0 10px;
     }
 
-    .actions-wrapper {
+    .actions__container {
         display: flex;
         height: 60px;
         justify-content: flex-end;
@@ -109,7 +109,7 @@
         to {opacity: 1;}
     }
 
-    .actions-wrapper p {
+    .actions__container p {
         font-size: 20px;
         font-weight: bold;
         letter-spacing: 1px;
@@ -119,7 +119,7 @@
         cursor: pointer;
     }
 
-    .article-wrapper {
+    .article__container {
         width: 1366px;
         margin: auto;
         font-family: 'Montserrat', sans-serif;
@@ -129,17 +129,17 @@
         animation-duration: 1s;
     }
 
-    .article-header {
+    .article__header {
         display: flex;
         flex-direction: column; 
     }
 
-    .article-header p {
+    .article__header p {
         font-size: 20px;
         letter-spacing: 2px;
     }
 
-    .article-header textarea {
+    .article__header textarea {
         font-size: 40px;
         padding: 15px;
         height: 150px;
@@ -151,20 +151,20 @@
         margin: 30px 0;
     }
 
-    .article-body {
+    .article__body {
         margin-bottom: 40px;
         display: flex;
         flex-direction: column;
     }
 
-    .img-wrapper {
+    .img__container {
         background: #D6D6D6;
         height: 666px;
         margin-bottom: 60px;
         position: relative;
     }
 
-    .article-body textarea {
+    .article__body textarea {
         font-size: 18px;
         padding: 15px;
         line-height: 40px;
@@ -172,29 +172,6 @@
         resize: none;
         border-radius: 0;
         outline: none;
-    }
-
-    .article-comments h2 {
-        font-size: 50px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
-
-    .input-section {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .input-section textarea {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 19px;
-        letter-spacing: 1px;
-        height: 160px;
-        padding: 40px;
-        resize: none;
-        border-radius: 0;
-        outline: none;
-        margin-bottom: 40px;
     }
 
     input[type=button] {

@@ -1,8 +1,8 @@
 <template>
-    <div class="navbar-wrapper">
-        <div class="navbar-container">
-            <div class="logo-container">
-                <img src="../assets/company-logo.png" />
+    <div class="navbar">
+        <div class="navbar__container">
+            <div class="logo__container">
+                <img src="../../assets/company-logo.png" />
             </div>
             <p
                 v-if="getCurrentRoute == 'login' || getCurrentRoute == 'register'"
@@ -70,12 +70,12 @@
 
 <style scoped>
 
-    .navbar-wrapper {
+    .navbar {
         background: white;
         
     }
 
-    .navbar-container {
+    .navbar__container {
         width: 1366px;
         height: 100px;
         margin: auto;
@@ -84,7 +84,7 @@
         justify-content: flex-start;
     }
 
-    .logo-container {
+    .logo__container {
         flex: 1;
     }
 

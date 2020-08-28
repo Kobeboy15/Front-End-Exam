@@ -1,7 +1,7 @@
 <template>
-    <div class="news-wrapper">
-        <div class="news-container">
-            <div class="news-header">
+    <div class="news">
+        <div class="news__container">
+            <div class="news__header">
                 <h2>News</h2>
                 <p
                     v-if="navRef && navRef.isLoggedIn"
@@ -10,7 +10,7 @@
                     Create New Post
                 </p>
             </div>
-            <transition-group name="list" tag="div" class="news-body">
+            <transition-group name="list" tag="div" class="news__body">
                 <div 
                     v-for="(article, index) in filtedArticles" 
                     :key="`article-${index}`"
@@ -23,7 +23,7 @@
                     />
                 </div>
             </transition-group>
-            <div class="news-footer">
+            <div class="news__footer">
                 <input 
                     type="button" 
                     v-if="articles.length > articleFeedLimit" 
@@ -128,28 +128,28 @@ import Card from '../components/GenericComponents/Card.vue';
 
 <style scoped>
 
-    .news-wrapper {
+    .news {
         font-family: 'Montserrat', sans-serif;
         background: white;
         width: 1366px;
         margin: auto;
     }
 
-    .news-container {
+    .news__container {
         padding: 98px 0;
     }
 
-    .news-header {
+    .news__header {
         margin-bottom: 65px;
         display: flex;
         align-items: center;
     }
 
-    .news-header h2 {
+    .news__header h2 {
         flex: 1;
     }
 
-    .news-header p {
+    .news__header p {
         font-size: 20px;
         font-weight: bold;
         text-decoration: underline;
@@ -160,14 +160,14 @@ import Card from '../components/GenericComponents/Card.vue';
         transition: 0.2s ease-in-out;
     }
 
-    .news-body {
+    .news__body {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 60px 50px;
         margin-bottom: 70px;
     }
 
-    .news-footer {
+    .news__footer {
         text-align: center;
     }
 
@@ -180,9 +180,9 @@ import Card from '../components/GenericComponents/Card.vue';
     }
 
     input[type=button] {
-        width: calc(100% / 3);
-        padding: 23px 30px;
         font-family: 'Montserrat', sans-serif;
+        width: 420px;
+        padding: 23px 30px;
         font-weight: bold;
         background: #101010;
         color: white;
@@ -190,8 +190,6 @@ import Card from '../components/GenericComponents/Card.vue';
         font-size: 20px;
         border: 0;
         border: 1px solid #101010;
-        
-
         cursor: pointer;
         transition: 0.2s ease-in-out;
     }
@@ -200,7 +198,6 @@ import Card from '../components/GenericComponents/Card.vue';
         background: white;
         color: #101010;
         border: 1px solid #101010;
-
         transition: 0.2s ease-in-out;
     }
 
@@ -219,6 +216,5 @@ import Card from '../components/GenericComponents/Card.vue';
         color: #101010;
         margin: 0;
     }
-    
 
 </style>

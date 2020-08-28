@@ -1,14 +1,14 @@
 <template>
-    <div class="view-article-wrapper">
-        <div class="header-nav-panel">
-            <div class="nav-panel-container">
+    <div class="view__article">
+        <div class="navigation__panel">
+            <div class="navigation__container">
                 <p @click="goToDashboard">HOME</p>
                 <p>></p>
                 <p>{{ this.article.title }}</p>
             </div>
         </div>
-        <div class="article-wrapper">
-            <div class="actions-wrapper">
+        <div class="article__container">
+            <div class="actions__container">
                 <p 
                     v-if="$attrs.navRef.isLoggedIn && !enableEditMode"
                     @click="editInformation"
@@ -28,7 +28,7 @@
                     Cancel
                 </p>
             </div>
-            <div class="article-header">
+            <div class="article__header">
                 <p>{{ this.article.date_posted }}</p>
                 <h2 v-if="!enableEditMode">{{ this.article.title }}</h2>
                 <textarea
@@ -37,7 +37,7 @@
                     v-if="enableEditMode"
                 />
             </div>
-            <div class="article-body">
+            <div class="article__body">
                 <div>
                     <img :src="getImgUrl(article.image)" />
                 </div>
@@ -51,10 +51,10 @@
                     v-if="enableEditMode"
                 />
             </div>
-            <div class="article-comments">
+            <div class="article__comments">
                 <hr>
                 <h2>Comment</h2>
-                <div class="comment-section" name="list" tag="div">
+                <div name="list" tag="div">
                     <transition-group>
                         <CommentCard 
                             v-for="(item, index) in comments"
@@ -63,7 +63,7 @@
                             :date="item.date_posted"
                         />
                     </transition-group>
-                    <div class="input-section">
+                    <div class="comment__section">
                         <textarea placeholder="Write comment" v-model="commentField" />
                         <input type="button" value="Submit" @click="submitComment"/>
                     </div>
@@ -149,7 +149,7 @@
             },
 
             getImgUrl(fileName) {
-                return require('../assets/'+fileName);
+                return require('../../assets/'+fileName);
             },
 
             submitComment() {
@@ -177,14 +177,14 @@
         margin: 0;
     }
 
-    .header-nav-panel {
+    .navigation__panel {
         background: #F5F5F5;
         display: flex;
         width: 100%;
         height: 80px;
     }
 
-    .nav-panel-container {
+    .navigation__container {
         display: flex;
         width: 1366px;
         margin: auto;
@@ -192,25 +192,25 @@
         text-transform: uppercase;
     }
 
-    .nav-panel-container p:first-child {
+    .navigation__container p:first-child {
         cursor:pointer;
     }
 
-    .nav-panel-container p:first-child:hover {
+    .navigation__container p:first-child:hover {
         text-decoration: underline;
     }
 
-    .nav-panel-container p:nth-child(2) {
+    .navigation__container p:nth-child(2) {
         margin: 0 10px;
     }
 
-    .actions-wrapper {
+    .actions__container {
         display: flex;
         height: 60px;
         justify-content: flex-end;
     }
 
-    .actions-wrapper p {
+    .actions__container p {
         font-size: 20px;
         font-weight: bold;
         letter-spacing: 1px;
@@ -228,7 +228,7 @@
         to {opacity: 1;}
     }
 
-    .article-wrapper {
+    .article__container {
         width: 1366px;
         margin: auto;
         font-family: 'Montserrat', sans-serif;
@@ -238,23 +238,23 @@
         animation-duration: 1s;
     }
 
-    .article-header {
+    .article__header {
         display: flex;
         flex-direction: column; 
     }
 
-    .article-header p {
+    .article__header p {
         font-size: 20px;
         letter-spacing: 2px;
     }
 
-    .article-header h2 {
+    .article__header h2 {
         margin: 30px 0;
         font-size: 40px;
         word-break: keep-all;
     }
 
-    .article-header textarea {
+    .article__header textarea {
         font-size: 40px;
         padding: 15px;
         height: 150px;
@@ -266,23 +266,23 @@
         margin: 30px 0;
     }
 
-    .article-body {
+    .article__body {
         margin-bottom: 40px;
         display: flex;
         flex-direction: column;
     }
 
-    .article-body img {
+    .article__body img {
         margin-bottom: 60px;
     }
 
-    .article-body p {
+    .article__body p {
         font-size: 18px;
         line-height: 40px;
         height: 354px;
     }
 
-    .article-body textarea {
+    .article__body textarea {
         font-size: 18px;
         line-height: 40px;
         height: 354px;
@@ -291,7 +291,7 @@
         outline: none;
     }
 
-    .article-comments h2 {
+    .article__comments h2 {
         font-size: 50px;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -305,12 +305,12 @@
         transform: translateY(30px);
     }
 
-    .input-section {
+    .comment__section {
         display: flex;
         flex-direction: column;
     }
 
-    .input-section textarea {
+    .comment__section textarea {
         font-family: 'Montserrat', sans-serif;
         font-size: 19px;
         letter-spacing: 1px;

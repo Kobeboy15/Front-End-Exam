@@ -1,30 +1,28 @@
 <template>
-    <div class="login-container">
-        <div class="login-form">
-            <div key="loginForm">
-                <div class="header-title">
-                    <h2>Login</h2>
-                </div>
-                <div class="login login-email">
-                    <p>Email</p>
-                    <input type="email" v-model="loginEmail"/>
-                </div>
-                <div class="login login-pass">
-                    <p>Password</p>
-                    <input type="password" v-model="loginPassWord" />
-                </div>
-                <div class="login-actions">
-                    <input 
-                        type="button" 
-                        value="Login"
-                        @click="logUserIn"
-                    />
-                    <p>No account yet? 
-                        <span @click="openRegisterForm">
-                            Register Here
-                        </span>
-                    </p>
-                </div>
+    <div class="login__form">
+        <div class="login__container">
+            <div class="login__title">
+                <h2>Login</h2>
+            </div>
+            <div class="login__item">
+                <p>Email</p>
+                <input type="email" v-model="loginEmail"/>
+            </div>
+            <div class="login__item">
+                <p>Password</p>
+                <input type="password" v-model="loginPassWord" />
+            </div>
+            <div class="login__actions">
+                <input 
+                    type="button" 
+                    value="Login"
+                    @click="logUserIn"
+                />
+                <p>No account yet? 
+                    <span @click="openRegisterForm">
+                        Register Here
+                    </span>
+                </p>
             </div>
         </div>
     </div>
@@ -59,15 +57,7 @@
         margin: 0;
     }
 
-    .slide-enter-active, .slide-leave-active {
-        transition: all 1s;
-    }
-    .slide-enter, .slide-leave-to {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    .login-container {
+    .login__form {
         width: 460px;
         height: 666px;
         margin: auto;
@@ -81,52 +71,52 @@
         to {opacity: 1;}
     }
 
-    .login-form {
+    .login__container {
         font-family: 'Montserrat', sans-serif;
 
         animation-name: slide;
         animation-duration: 1s;
     }
 
-    .header-title {
+    .login__title {
         text-transform: uppercase;
         margin-bottom: 50px;
     }
 
-    .header-title h2 {
+    .login__title h2 {
         letter-spacing: 2px;
     }
 
-    .login {
+    .login__item {
         display: flex;
         flex-direction: column;
         margin-bottom: 20px;
     }
 
-    .login p {
+    .login__item p {
         font-size: 18px;
         margin: 5px 0;
         letter-spacing: 1px;
     }
 
-    .login input {
+    .login__item input {
         padding: 12px;
         border-radius: 0;
         border: 1px solid #101010
     }
 
-    .login-actions p {
+    .login__actions p {
         text-align: center;
         letter-spacing: 1px;
     }
 
-    .login-actions span {
+    .login__actions span {
         cursor: pointer;
         font-weight: bold;
         text-transform: uppercase;
     }
 
-    .login-actions span:hover {
+    .login__actions span:hover {
         text-decoration: underline;
     }
 

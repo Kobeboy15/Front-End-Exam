@@ -1,22 +1,22 @@
 <template>
-    <div class="footer-wrapper">
-        <div class="footer-container">
-            <div class="footer-banner">
-                <div class="footer-info">
-                    <img src="../assets/company-logo-white.png" class="logo"/>
+    <div class="footer">
+        <div class="footer__container">
+            <div class="footer__logo">
+                <div class="logo__container">
+                    <img src="../../assets/company-logo-white.png" class="logo"/>
                     <p>
                         サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキスト
                     </p>
                 </div>
             </div>
-            <div class="top-button-container" @click="scrollToTop" >
-                <div class="top-button">
-                    <img src="../assets/Path_3.png"/>
+            <div class="button-container" @click="scrollToTop" >
+                <div class="button__top">
+                    <img src="../../assets/Path_3.png"/>
                     <p>Top</p>
                 </div>
             </div>
         </div>
-        <div class="footer-copyright">
+        <div class="footer__copyright">
             <p>Copyright©2007-2019 Blog Inc.</p>
         </div>
     </div>
@@ -39,23 +39,31 @@
 
 <style scoped>
 
-    .footer-wrapper {
+    .footer {
         background: #292929;
     }
 
-    .footer-container {
+    .footer__container {
         width: 1366px;
         margin: auto;
 
         display: flex;
     }
 
-
-    .footer-banner {
+    .footer__logo {
         flex: 1;
     }
 
-    .top-button-container {
+    .logo__container {
+        width: 414px;
+        padding: 78px 0 68px;
+    }
+    
+    .logo {
+        margin-bottom: 47px;
+    }
+
+    .button-container {
         background: white;
         width: 70px;
         height: 70px;
@@ -68,7 +76,7 @@
         cursor: pointer;
     }
 
-    .top-button p {
+    .button__top p {
         color: #101010;
         font-family: 'Montserrat', sans-serif;
         font-weight: bold;
@@ -77,25 +85,16 @@
         letter-spacing: 1px;
     }
 
-    .footer-info {
-        width: 414px;
-        padding: 78px 0 68px;
-    }
-
-    .footer-copyright {
+    .footer__copyright {
         background: #101010;
     }
 
-    .footer-copyright p {
+    .footer__copyright p {
         font-family: 'Montserrat', sans-serif;
         font-weight: 500;
         padding: 35px 0;
         letter-spacing: 2px;
         text-align: center;
-    }
-
-    .logo {
-        margin-bottom: 47px;
     }
 
     p {

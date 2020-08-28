@@ -1,5 +1,5 @@
 <template>
-    <div class="comment-container">
+    <div class="comment__container">
         <p>{{ comment }}</p>
         <p>{{ date }}</p>
     </div>
@@ -25,7 +25,7 @@
 
 <style scoped>
 
-    .comment-container {
+    .comment__container {
         background: #F5F5F5;
         padding: 40px;
         margin-bottom: 50px;

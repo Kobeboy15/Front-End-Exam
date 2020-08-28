@@ -29,12 +29,12 @@ Vue.use(VueRouter)
     {
         path: '/home/article',
         name: 'view-article',
-        component: () => import ('@/components/ViewArticle.vue'),
+        component: () => import ('@/components/article_components/ViewArticle.vue'),
     },
     {
         path: '/home/create-article',
         name: 'create-article',
-        component: () => import ('@/components/CreateArticle.vue'),
+        component: () => import ('@/components/article_components/CreateArticle.vue'),
     }
 ]
 

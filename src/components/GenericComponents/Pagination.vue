@@ -1,6 +1,6 @@
 <template>
-    <div class="pagination-container">
-        <div v-for="(page, index) in maxPage+1" :key="`page-${index}`" class="indicator-container">
+    <div class="pagination">
+        <div v-for="(page, index) in maxPage+1" :key="`page-${index}`" class="indicator__container">
             <img
                 v-if="index == currentPage" 
                 src="../../assets/Ellipse_Selected.png" 
@@ -39,14 +39,13 @@
 
 <style scoped>
 
-    .pagination-container {
+    .pagination {
         display: flex;
     }
 
-    .indicator-container {
+    .indicator__container {
         margin-bottom: 50px;
         padding: 0 5px;
-
         cursor: pointer;
     }
 
