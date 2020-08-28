@@ -6,18 +6,22 @@
             </div>
             <div class="register register-email">
                 <p>Email</p>
-                <input type="text" />
+                <input type="text" v-model="registerEmail"/>
             </div>
             <div class="register register-pass">
                 <p>Password</p>
-                <input type="password" />
+                <input type="password" v-model="registerPass"/>
             </div>
             <div class="register register-pass">
                 <p>Confirm Password</p>
-                <input type="password" />
+                <input type="password" v-model="registerConfirm"/>
             </div>
             <div class="register-actions" >
-                <input type="button" value="register" />
+                <input 
+                    type="button" 
+                    value="register"
+                    @click="registerUserIn"
+                />
                 <p>Already have an account? 
                     <span @click="openLoginForm">Login Here</span>
                 </p>
@@ -30,9 +34,21 @@
     export default {
         name: 'RegisterForm',
 
+        data() {
+            return{
+                registerEmail: '',
+                registerPass: '',
+                registerConfirm: ''
+            }
+        },
+
         methods: {
             openLoginForm() {
                 this.$router.push({name: 'login'})
+            },
+
+            registerUserIn() {
+                this.$attrs.navRef.logUserIn()
             }
         }
     }

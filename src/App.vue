@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <Navbar ref="nav"/>
-        <router-view :data="$refs.nav"/>
+        <router-view :navRef="navRef"/>
         <FooterSection />
     </div>
 </template>
@@ -13,9 +13,27 @@
     export default {
         name: 'App',
 
+        data() {
+            return{
+                navRef: null,
+            }
+        },
+
         components: {
             Navbar,
             FooterSection,
+        },
+
+        created() {
+            this.$nextTick(() => {
+                this.navRef = this.$refs.nav;
+            })
+        },
+
+        mounted() {
+            if(this.$route.name == 'main'){
+                this.$router.push({name: 'home'});
+            }
         },
     }
 </script>

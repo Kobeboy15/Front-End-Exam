@@ -7,11 +7,11 @@
                 </div>
                 <div class="login login-email">
                     <p>Email</p>
-                    <input type="text" />
+                    <input type="email" v-model="loginEmail"/>
                 </div>
                 <div class="login login-pass">
                     <p>Password</p>
-                    <input type="password" />
+                    <input type="password" v-model="loginPassWord" />
                 </div>
                 <div class="login-actions">
                     <input 
@@ -34,13 +34,20 @@
     export default {
         name: 'LoginForm',
 
+        data() {
+            return{
+                loginEmail: '',
+                loginPassWord: ''
+            }
+        },
+
         methods: {
             openRegisterForm() {
                 this.$router.push({name: 'register'})
             },
 
             logUserIn() {
-                this.$attrs.data.logUserIn();
+                this.$attrs.navRef.logUserIn();
             }
         }
     }

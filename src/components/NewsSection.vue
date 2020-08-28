@@ -3,7 +3,12 @@
         <div class="news-container">
             <div class="news-header">
                 <h2>News</h2>
-                <p>Create New Post</p>
+                <p
+                    v-if="navRef && navRef.isLoggedIn"
+                    @click="createPost"
+                >
+                    Create New Post
+                </p>
             </div>
             <transition-group name="list" tag="div" class="news-body">
                 <div 
@@ -38,6 +43,13 @@ import Card from '../components/GenericComponents/Card.vue';
 
         components: {
             Card,
+        },
+
+        props: {
+            navRef: {
+                type: Object,
+                required: false,
+            }
         },
 
         data() {
@@ -97,13 +109,17 @@ import Card from '../components/GenericComponents/Card.vue';
         methods: {
             openViewArticle() {
                 this.$router.push({name: 'view-article'}) 
+            },
+
+            createPost() {
+                this.$router.push({name: 'create-article'})
             }
         },
 
         computed: {
             filtedArticles() {
                 return this.articles.filter( (el, index) => index < this.articleFeedLimit);
-            }
+            },
         }
     }
 
@@ -126,6 +142,7 @@ import Card from '../components/GenericComponents/Card.vue';
     .news-header {
         margin-bottom: 65px;
         display: flex;
+        align-items: center;
     }
 
     .news-header h2 {
@@ -137,6 +154,7 @@ import Card from '../components/GenericComponents/Card.vue';
         font-weight: bold;
         text-decoration: underline;
         letter-spacing: 2px;
+        margin: 0;
 
         cursor: pointer;
         transition: 0.2s ease-in-out;

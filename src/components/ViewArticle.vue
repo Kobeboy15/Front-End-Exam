@@ -9,19 +9,47 @@
         </div>
         <div class="article-wrapper">
             <div class="actions-wrapper">
-                <p>Edit Post</p>
-                <p v-if="false">Save Post</p>
-                <p v-if="false">Cancel</p>
+                <p 
+                    v-if="$attrs.navRef.isLoggedIn && !enableEditMode"
+                    @click="editInformation"
+                >
+                    Edit Post
+                </p>
+                <p 
+                    v-if="enableEditMode"
+                    @click="saveEditInfo"
+                >
+                    Save Post
+                </p>
+                <p 
+                    v-if="enableEditMode"
+                    @click="cancelEditInfo"
+                >
+                    Cancel
+                </p>
             </div>
             <div class="article-header">
                 <p>{{ this.article.date_posted }}</p>
-                <h2>{{ this.article.title }}</h2>
+                <h2 v-if="!enableEditMode">{{ this.article.title }}</h2>
+                <textarea
+                    maxlength="47"
+                    v-model="article.title"
+                    v-if="enableEditMode"
+                />
             </div>
             <div class="article-body">
-                <img src="../assets/photo1.png" />
-                <p>
+                <div>
+                    <img :src="getImgUrl(article.image)" />
+                </div>
+                <p
+                    v-if="!enableEditMode"
+                >
                     {{ this.article.description }}
                 </p>
+                <textarea 
+                    v-model="article.description"
+                    v-if="enableEditMode"
+                />
             </div>
             <div class="article-comments">
                 <hr>
@@ -63,6 +91,7 @@
             return{
                 article: {
                     title: 'サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキスト',
+                    image: 'photo1.png',
                     date_posted: '2019.06.19',
                     description: 'ここにはテキストが入ります。ここにはテキストが入りますここにはテキストが入りますここには'+
                     'テキストが入りますここにはテキストが入ります。ここにはテキストが入ります。ここにはテキストが入りますここに'+
@@ -83,10 +112,31 @@
                     }
                 ],
                 commentField: '',
+                enableEditMode: false,
+                tempTitle: '',
+                tempDesc: '',
+                
             }
         },
 
         methods: {
+            editInformation() {
+                this.tempTitle = this.article.title;
+                this.tempDesc = this.article.description;
+                this.enableEditMode = true;
+            },
+
+            saveEditInfo() {
+                this.enableEditMode = false;
+            },
+
+            cancelEditInfo() {
+                this.article.title = this.tempTitle;
+                this.article.description = this.tempDesc
+                this.enableEditMode = false;
+            },
+
+
             goToDashboard() {
                 this.$router.push({name: 'home'})
             },
@@ -98,10 +148,14 @@
                 })
             },
 
+            getImgUrl(fileName) {
+                return require('../assets/'+fileName);
+            },
+
             submitComment() {
                 let commentObj = {};
                 if(this.commentField) {
-                    commentObj.date_posted = "3 months ago";
+                    commentObj.date_posted = "A moment ago...";
                     commentObj.comment = this.commentField;
 
                     this.comments.unshift(commentObj);
@@ -152,6 +206,7 @@
 
     .actions-wrapper {
         display: flex;
+        height: 60px;
         justify-content: flex-end;
     }
 
@@ -162,6 +217,7 @@
         text-decoration: underline;
         margin-bottom: 30px;
         margin-left: 50px;
+        cursor: pointer;
     }
 
     @keyframes slide {
@@ -182,18 +238,38 @@
         animation-duration: 1s;
     }
 
+    .article-header {
+        display: flex;
+        flex-direction: column; 
+    }
+
     .article-header p {
         font-size: 20px;
         letter-spacing: 2px;
     }
 
     .article-header h2 {
+        margin: 30px 0;
         font-size: 40px;
         word-break: keep-all;
     }
 
+    .article-header textarea {
+        font-size: 40px;
+        padding: 15px;
+        height: 150px;
+        word-break: keep-all;
+        font-weight: bold;
+        resize: none;
+        border-radius: 0;
+        outline: none;
+        margin: 30px 0;
+    }
+
     .article-body {
         margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
     }
 
     .article-body img {
@@ -204,6 +280,15 @@
         font-size: 18px;
         line-height: 40px;
         height: 354px;
+    }
+
+    .article-body textarea {
+        font-size: 18px;
+        line-height: 40px;
+        height: 354px;
+        resize: none;
+        border-radius: 0;
+        outline: none;
     }
 
     .article-comments h2 {

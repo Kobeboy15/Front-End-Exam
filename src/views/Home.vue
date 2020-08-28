@@ -1,7 +1,7 @@
 <template>
     <div class="home-page">
-        <router-view :data="$attrs.data"/>
-        <NewsSection />
+        <router-view :navRef="$attrs.navRef"/>
+        <NewsSection :navRef="$attrs.navRef"/>
     </div>
 </template>
 
@@ -13,14 +13,6 @@ export default {
 
     components: {
         NewsSection,
-    },
-
-    created() {
-        this.$router.push({name: 'home'}).catch(error => {
-            if (error.name != "NavigationDuplicated") {
-                throw error;
-            }
-        });
     },
 }
 </script>

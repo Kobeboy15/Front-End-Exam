@@ -38,7 +38,7 @@
 
         methods: {
             openLoginForm() {
-                this.$router.push({name: 'login'})
+                this.$router.push({path: '/login'})
             },
 
             goToDashboard() {
@@ -52,7 +52,11 @@
 
             logUserOut() {
                 this.isLoggedIn = false;
-                this.$router.push({name: 'home'});
+                this.$router.push({name: 'home'}).catch(error => {
+                    if (error.name != "NavigationDuplicated") {
+                        throw error;
+                    }
+                });
             },
         },
 
