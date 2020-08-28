@@ -41,6 +41,7 @@
 
     .pagination {
         display: flex;
+        align-self: flex-end;
     }
 
     .indicator__container {
